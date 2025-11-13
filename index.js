@@ -2,14 +2,17 @@
 
 import fs from "fs";
 
+//Gets args, tasks and count the size of tasks
 const args = process.argv.slice(2);
 const tasks = [];
 const countTasks = tasks.length;
 
 function isIdValid(id)
 {
+    //Change id to it's index value
     id -= 2;
 
+    //Check if it's a valid id
     if (!Number.isInteger(id) || id < 0 || id >= countTasks)
     {
         console.log("ID inválido.");
@@ -70,11 +73,32 @@ function updateTasks(taskEdit, id)
     tasks[id - 2].updatedAt = new Date().toLocaleString();
 }
 
-function listTasks()
+function listTasks(status)
 {
+    //Check if status is valid
+    const validStatus = 
+    {
+        "todo": true,
+        "done": true,
+        "in-progress": true,
+    }
+
+    if (!validStatus[status])
+    {
+        console.log("Invalid Status: Please provide a valid one.")
+        return 4;
+    }
+
+    //Print the information
     console.log("ID\tTarefa\tStatus\tData de Criação\tData de Atualização\n")
+
+    //Print each task based on it's choosen status
     tasks.forEach((task) => 
     {
+
+        if (task.status != status && status !== undefined)
+            return
+
         const msg =
         task.id + "\t" + 
         task.description + "\t" + 
@@ -92,4 +116,3 @@ if (!args[0])
     console.log("Usage error: node index.js {add|remove|update|list} {id} {argument}")
     process.exit(1);
 }
-
