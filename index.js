@@ -8,6 +8,8 @@ const countTasks = tasks.length;
 
 function isIdValid(id)
 {
+    id -= 2;
+
     if (!Number.isInteger(id) || id < 0 || id >= countTasks)
     {
         console.log("ID inválido.");
@@ -34,16 +36,14 @@ function addTask(task)
 }
 
 function removeTask(id)
-{   
-    //Set the id to the array index value
-    id--;
+{
 
     //Check if the id is valid
     if(!isIdValid(id))
         return 2;
 
     //Remove the task based on its ID in the tasks array
-    tasks.splice(id, 1);
+    tasks.splice(id - 2, 1);
 
     //Reorganize the tasks array
     tasks.forEach((task, index) => 
@@ -54,8 +54,7 @@ function removeTask(id)
 
 function updateTasks(taskEdit, id)
 {
-
-    id--;
+    
     //Check if the new description is valid
     if (typeof taskEdit !== "string")
     {
@@ -67,8 +66,8 @@ function updateTasks(taskEdit, id)
     if(!isIdValid(id))
         return 2;
     
-    tasks[id].description = taskEdit;
-    tasks[id].updatedAt = new Date().toLocaleString();
+    tasks[id - 2].description = taskEdit;
+    tasks[id - 2].updatedAt = new Date().toLocaleString();
 }
 
 function listTasks()
