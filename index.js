@@ -72,7 +72,18 @@ function updateTasks(taskEdit, id)
 
 function listTasks()
 {
+    console.log("ID\tTarefa\tStatus\tData de Criação\tData de Atualização\n")
+    tasks.forEach((task) => 
+    {
+        const msg =
+        task.id + "\t" + 
+        task.description + "\t" + 
+        task.status + "\t" + 
+        task.createdAt + "\t" + 
+        task.updatedAt;
 
+        console.log(msg);
+    })
 }
 
 //Check if there is function argument
