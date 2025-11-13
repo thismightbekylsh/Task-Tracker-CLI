@@ -116,3 +116,20 @@ if (!args[0])
     console.log("Usage error: node index.js {add|remove|update|list} {id} {argument}")
     process.exit(1);
 }
+
+const options = 
+{
+    "add": () => addTask(args[1]),
+    "remove": () => removeTask(args[1]),
+    "update": () => updateTasks(args[2], args[1]),
+    "list": () => listTasks(args[1]),
+}
+
+if (options[args[0]]) 
+    options[args[0]]();
+
+else
+{
+    console.log("Invalid argument");
+    process.exit(1);
+}
