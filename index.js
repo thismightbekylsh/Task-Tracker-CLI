@@ -10,7 +10,7 @@ const countTasks = tasks.length;
 function isIdValid(id)
 {
     //Change id to it's index value
-    id -= 2;
+    id -= 1;
 
     //Check if it's a valid id
     if (!Number.isInteger(id) || id < 0 || id >= countTasks)
@@ -46,7 +46,7 @@ function removeTask(id)
         return 2;
 
     //Remove the task based on its ID in the tasks array
-    tasks.splice(id - 2, 1);
+    tasks.splice(id - 1, 1);
 
     //Reorganize the tasks array
     tasks.forEach((task, index) => 
@@ -69,8 +69,8 @@ function updateTasks(taskEdit, id)
     if(!isIdValid(id))
         return 2;
     
-    tasks[id - 2].description = taskEdit;
-    tasks[id - 2].updatedAt = new Date().toLocaleString();
+    tasks[id - 1].description = taskEdit;
+    tasks[id - 1].updatedAt = new Date().toLocaleString();
 }
 
 function listTasks(status)
@@ -117,6 +117,7 @@ if (!args[0])
     process.exit(1);
 }
 
+//Options for args
 const options = 
 {
     "add": () => addTask(args[1]),
@@ -125,9 +126,9 @@ const options =
     "list": () => listTasks(args[1]),
 }
 
+//Option validation
 if (options[args[0]]) 
     options[args[0]]();
-
 else
 {
     console.log("Invalid argument");
