@@ -8,14 +8,16 @@ const jsonFilePath = "data.json";
 if(!fs.existsSync(jsonFilePath))
 {
     console.log("JSON file not found. Creating a new one");
-    fs.writeFile("data.json", JSON.stringify([]), (err) => {
+    fs.writeFileSync("data.json", "[]", (err) => {
         if (err)
+        {
             console.error('Error writing JSON file:', err);
+        }
         else 
+        {
             console.log('JSON file created successfully: data.json');
+        }
     })
-    console.log("You can use it now");
-    process.exit(0);
 }
 
 //Gets args, tasks and count the size of tasks
