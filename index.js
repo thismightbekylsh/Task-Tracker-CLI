@@ -45,7 +45,7 @@ function isStatusValid(status)
 {
     const validStatus = 
     {
-        "": true,
+        undefined: true,
         "todo": true,
         "done": true,
         "in-progress": true,
@@ -199,7 +199,6 @@ const save = () =>
             process.exit(0);
 })
 }
-
 
 //Get if should save in current operation
 const shouldSave =
