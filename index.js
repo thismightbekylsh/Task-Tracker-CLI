@@ -1,10 +1,27 @@
 //This program is a task tracker made to run in CLI enviroment. Read README.md to more information.
 
-import fs from "fs";
+import fs, { readFile, readFileSync } from "fs";
+
+const jsonFilePath = "data.json";
+
+//Check if json file is created
+if(!fs.existsSync(jsonFilePath))
+{
+    console.log("JSON file not found. Creating a new one");
+    fs.writeFile("data.json", JSON.stringify([]), (err) => {
+        if (err)
+            console.error('Error writing JSON file:', err);
+        else 
+            console.log('JSON file created successfully: data.json');
+    })
+    console.log("You can use it now");
+    process.exit(0);
+}
 
 //Gets args, tasks and count the size of tasks
 const args = process.argv.slice(2);
-const tasks = [];
+const objData = readFileSync(jsonFilePath, "utf-8");
+const tasks = JSON.parse(objData);
 const countTasks = tasks.length;
 
 function isIdValid(id)
@@ -22,8 +39,28 @@ function isIdValid(id)
     return true;
 }
 
+function isStatusValid(status)
+{
+    const validStatus = 
+    {
+        "": true,
+        "todo": true,
+        "done": true,
+        "in-progress": true,
+    }
+
+    return validStatus[status];
+}
+
 function addTask(task)
 {
+    //Check if there is a description
+    if(task === undefined)
+    {
+        console.log("Description missing, correct use: node task-cli add {description}");
+        process.exit(1);
+    }
+
     //Create a object for a new task
     const newTask = 
     {
@@ -55,7 +92,7 @@ function removeTask(id)
     })
 }
 
-function updateTasks(taskEdit, id)
+function updateTasks(id, taskEdit)
 {
     
     //Check if the new description is valid
@@ -76,28 +113,21 @@ function updateTasks(taskEdit, id)
 function listTasks(status)
 {
     //Check if status is valid
-    const validStatus = 
+    if (!isStatusValid(status))
     {
-        "todo": true,
-        "done": true,
-        "in-progress": true,
-    }
-
-    if (!validStatus[status])
-    {
-        console.log("Invalid Status: Please provide a valid one.")
+        console.log("Invalid Status: Please provide a valid one.");
         return 4;
     }
 
     //Print the information
-    console.log("ID\tTarefa\tStatus\tData de Criação\tData de Atualização\n")
+    console.log("ID\tTarefa\tStatus\tData de Criação\tData de Atualização\n");
 
     //Print each task based on it's choosen status
     tasks.forEach((task) => 
     {
-
-        if (task.status != status && status !== undefined)
-            return
+        if (status != "")
+            if (task.status != status && status !== undefined)
+                return;
 
         const msg =
         task.id + "\t" + 
@@ -110,10 +140,15 @@ function listTasks(status)
     })
 }
 
+function markTaskAs(id, status)
+{
+    tasks[id - 1].status = status;
+}
+
 //Check if there is function argument
 if (!args[0])
 {
-    console.log("Usage error: node index.js {add|remove|update|list} {id} {argument}")
+    console.log("Usage error: node index.js {add|remove|update|list} {id} {argument}");
     process.exit(1);
 }
 
@@ -122,8 +157,10 @@ const options =
 {
     "add": () => addTask(args[1]),
     "remove": () => removeTask(args[1]),
-    "update": () => updateTasks(args[2], args[1]),
+    "update": () => updateTasks(args[1], args[2]),
     "list": () => listTasks(args[1]),
+    "mark-done": () => markTaskAs(args[1], "done"),
+    "mark-in-progress": () => markTaskAs(args[1], "in-progress")
 }
 
 //Option validation
@@ -134,3 +171,11 @@ else
     console.log("Invalid argument");
     process.exit(1);
 }
+
+const jsonData = JSON.stringify(tasks);
+fs.writeFile('data.json', jsonData, (err) => {
+    if (err)
+        console.error('Error saving data in JSON file:', err);
+    else 
+        process.exit(0);
+})
