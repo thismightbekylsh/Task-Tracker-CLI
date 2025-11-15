@@ -164,7 +164,7 @@ function markTaskAs(id, status)
 //Check if there is function argument
 if (!args[0])
 {
-    console.log("Usage error: node index.js {add|remove|update|list} {id} {argument}");
+    console.log("Usage error: node index.js {add|remove|update|list|mark-done|mark-in-progress} {id} {argument}");
     process.exit(1);
 }
 
