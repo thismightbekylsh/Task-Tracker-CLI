@@ -73,14 +73,15 @@ function addTask(task)
 
     //Add the task to the main tasks array
     tasks.push(newTask);
+
+    return true;
 }
 
 function removeTask(id)
 {
-
     //Check if the id is valid
     if(!isIdValid(id))
-        return 2;
+        process.exit(2);
 
     //Remove the task based on its ID in the tasks array
     tasks.splice(id - 1, 1);
@@ -90,6 +91,8 @@ function removeTask(id)
     {
         task.id = index + 1;
     })
+
+    return true;
 }
 
 function updateTasks(id, taskEdit)
@@ -99,15 +102,17 @@ function updateTasks(id, taskEdit)
     if (typeof taskEdit !== "string")
     {
         console.log("Descrição inválida");
-        return 3;
+        process.exit(3);
     }
 
     //Check if the id is valid
     if(!isIdValid(id))
-        return 2;
+        process.exit(2);
     
     tasks[id - 1].description = taskEdit;
     tasks[id - 1].updatedAt = new Date().toLocaleString();
+
+    return true;
 }
 
 function listTasks(status)
@@ -116,7 +121,7 @@ function listTasks(status)
     if (!isStatusValid(status))
     {
         console.log("Invalid Status: Please provide a valid one.");
-        return 4;
+        process.exit(4);
     }
 
     //Print the information
@@ -125,7 +130,6 @@ function listTasks(status)
     //Print each task based on it's choosen status
     tasks.forEach((task) => 
     {
-        if (status != "")
             if (task.status != status && status !== undefined)
                 return;
 
@@ -141,8 +145,15 @@ function listTasks(status)
 }
 
 function markTaskAs(id, status)
-{
+{   
+
+    //Check if the id is valid
+    if(!isIdValid(id))
+        process.exit(2);
+
     tasks[id - 1].status = status;
+
+    return true;
 }
 
 //Check if there is function argument
@@ -164,18 +175,38 @@ const options =
 }
 
 //Option validation
-if (options[args[0]]) 
-    options[args[0]]();
-else
+if (!options[args[0]]) 
 {
     console.log("Invalid argument");
     process.exit(1);
 }
 
-const jsonData = JSON.stringify(tasks);
-fs.writeFile('data.json', jsonData, (err) => {
-    if (err)
-        console.error('Error saving data in JSON file:', err);
-    else 
-        process.exit(0);
+const result = options[args[0]]();
+
+//Save function
+const save = () => 
+{
+    const jsonData = JSON.stringify(tasks);
+    fs.writeFile('data.json', jsonData, (err) => {
+        if (err)
+            console.error('Error saving data in JSON file:', err);
+        else 
+            process.exit(0);
 })
+}
+
+
+//Get if should save in current operation
+const shouldSave =
+{
+    "add": true,
+    "remove": true,
+    "update": true,
+    "mark-done": true,
+    "mark-in-progress": true
+};
+
+// Saves if operation needs it
+if (shouldSave[args[0]] && result === true) {
+    save();
+}
