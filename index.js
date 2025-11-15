@@ -75,7 +75,7 @@ function addTask(task)
 
     //Add the task to the main tasks array
     tasks.push(newTask);
-
+    console.log("Task sucessfully added");
     return true;
 }
 
@@ -94,6 +94,7 @@ function removeTask(id)
         task.id = index + 1;
     })
 
+    console.log("Task sucessfully removed");
     return true;
 }
 
@@ -114,6 +115,7 @@ function updateTasks(id, taskEdit)
     tasks[id - 1].description = taskEdit;
     tasks[id - 1].updatedAt = new Date().toLocaleString();
 
+    console.log("Task sucessfully updated");
     return true;
 }
 
@@ -155,6 +157,7 @@ function markTaskAs(id, status)
 
     tasks[id - 1].status = status;
 
+    console.log("Task sucessfully marked as " + status);
     return true;
 }
 
