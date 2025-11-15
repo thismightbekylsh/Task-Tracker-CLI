@@ -67,7 +67,7 @@ node index.js list
 ## Author
 
 
-<img src = "https://i.imgur.com/0OAePz2.jpeg" width = "150" alt = "Kaylan Barbosa Sampaio">
+<img src = "https://i.imgur.com/0OAePz2.jpeg" width = "222" alt = "Kaylan Barbosa Sampaio">
 
 <p><b>Kaylan Barbosa Sampaio - Author</b></p>
-<a href = "https://www.linkedin.com/in/kaylansampaio/"><img href = "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png"><img src = "https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" width = "60"></a>
+<a href = "https://www.linkedin.com/in/kaylansampaio/"><img href = "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png"><img src = "https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" width = "70"></a>
