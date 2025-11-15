@@ -27,9 +27,7 @@ This was built as a command-line tool to manage tasks quickly in terminal-based 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [NodeJS](https://nodejs.org/en)
 
-<img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width = "30">
-<img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width = "30">
-<img src = https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg width = "30">
+<img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width = "30"> <img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width = "30"> <img src = https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg width = "30">
 
 ## Commands
 
