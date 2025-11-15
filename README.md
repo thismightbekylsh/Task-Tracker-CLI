@@ -27,9 +27,9 @@ This was built as a command-line tool to manage tasks quickly in terminal-based 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [NodeJS](https://nodejs.org/en)
 
-<img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" style = "width: 30; margin-left: 26">
-<img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" style = "width: 30; margin-left: 7; margin-top: 4">
-<img src = https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg style = "width: 30; margin-left: 5">
+<img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width = "30">
+<img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width = "30">
+<img src = https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg width = "30">
 
 ## Commands
 
@@ -68,14 +68,14 @@ node index.js list
 
 ## Author
 
-<table style="border-spacing: 0">
+<table border = "0">
     <tr>
         <td>
-            <img src = "https://i.imgur.com/0OAePz2.jpeg" style = "width: 150; border-radius: 50%; object-fit: cover" alt = "Kaylan Barbosa Sampaio">
+            <img src = "https://i.imgur.com/0OAePz2.jpeg" width = "150" alt = "Kaylan Barbosa Sampaio">
         </td>
         <td>
-            <h4 style = "margin-bottom: 6">Kaylan Barbosa Sampaio - Author</h4>
-            <a href = "https://www.linkedin.com/in/kaylansampaio/"><img href = "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png"><img src = "https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" style = "width: 60"></a>
+            <h4>Kaylan Barbosa Sampaio - Author</h4>
+            <a href = "https://www.linkedin.com/in/kaylansampaio/"><img href = "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png"><img src = "https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" width = "60"></a>
         </td>
     </tr>
 </table>
