@@ -66,14 +66,8 @@ node index.js list
 
 ## Author
 
-<table border = "0">
-    <tr>
-        <td>
-            <img src = "https://i.imgur.com/0OAePz2.jpeg" width = "150" alt = "Kaylan Barbosa Sampaio">
-        </td>
-        <td>
-            <h4>Kaylan Barbosa Sampaio - Author</h4>
-            <a href = "https://www.linkedin.com/in/kaylansampaio/"><img href = "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png"><img src = "https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" width = "60"></a>
-        </td>
-    </tr>
-</table>
+
+<img src = "https://i.imgur.com/0OAePz2.jpeg" width = "150" alt = "Kaylan Barbosa Sampaio">
+
+<p><b>Kaylan Barbosa Sampaio - Author</b></p>
+<a href = "https://www.linkedin.com/in/kaylansampaio/"><img href = "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png"><img src = "https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" width = "60"></a>
