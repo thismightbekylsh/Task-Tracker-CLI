@@ -1,4 +1,11 @@
 //This program is a task tracker made to run in CLI enviroment. Read README.md to more information.
+/*
+Error 1 - Invalid or missing id
+Error 2 - Invalid or missing description
+Error 3 - Invalid status
+Error 4 - Missing or invalid option
+Error 5 - Data saving error
+*/
 
 import fs, { readFile, readFileSync } from "fs";
 
@@ -63,7 +70,13 @@ function addTask(task)
     if(task === undefined)
     {
         console.log("Description missing, correct use: node index.js add {description}.");
-        process.exit(1);
+        process.exit(2);
+    }
+
+    if (typeof taskEdit !== "string")
+    {
+        console.log("Invalid Description: Please provide a valid one.");
+        process.exit(2);
     }
 
     //Create a object for a new task
@@ -88,7 +101,10 @@ function removeTask(id)
 {
     //Check if the id is valid
     if(!isIdValid(id))
-        process.exit(2);
+    {
+        console.log("Invalid ID: Please provide a valid one.");
+        process.exit(1);
+    }
 
     //Remove the task based on its ID in the tasks array
     tasks.splice(id - 1, 1);
@@ -110,14 +126,14 @@ function updateTasks(id, taskEdit)
     if (typeof taskEdit !== "string")
     {
         console.log("Invalid Description: Please provide a valid one.");
-        process.exit(3);
+        process.exit(2);
     }
 
     //Check if the id is valid
     if(!isIdValid(id))
     {   
-        console.log("Invalid Status: Please provide a valid one.");
-        process.exit(2);
+        console.log("Invalid ID: Please provide a valid one.");
+        process.exit(1);
     }
 
     //Changes the task description and the update date
@@ -135,7 +151,7 @@ function listTasks(status)
     if (!isStatusValid(status))
     {
         console.log("Invalid Status: Please provide a valid one.");
-        process.exit(4);
+        process.exit(3);
     }
 
     //Print the information
@@ -163,7 +179,10 @@ function markTaskAs(id, status)
 
     //Check if the id is valid
     if(!isIdValid(id))
-        process.exit(2);
+    {
+        console.log("Invalid ID: Please provide a valid one.");
+        process.exit(1);
+    }
 
     //Changes task status
     tasks[id - 1].status = status;
@@ -177,7 +196,7 @@ function markTaskAs(id, status)
 if (!args[0])
 {
     console.log("Usage error: node index.js {add|remove|update|list|mark-done|mark-in-progress} {id} {argument}.");
-    process.exit(1);
+    process.exit(4);
 }
 
 //Options for args
@@ -194,8 +213,8 @@ const options =
 //Option validation
 if (!options[args[0]]) 
 {
-    console.log("Invalid argument.");
-    process.exit(1);
+    console.log("Invalid option.");
+    process.exit(4);
 }
 
 //Get if the function returned true or false (True means that it was sucessfull and needs to be saved)
@@ -209,7 +228,10 @@ const save = () =>
         if (err)
             console.error('Error saving data in JSON file:', err);
         else 
-            process.exit(0);
+        {
+            console.log("Error saving data")
+            process.exit(5);
+        }
 })
 }
 
