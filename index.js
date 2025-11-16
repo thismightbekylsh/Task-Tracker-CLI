@@ -28,10 +28,12 @@ if(!fs.existsSync(jsonFilePath))
     })
 }
 
-//Gets args, tasks and count the size of tasks
+//Gets args, tasks data and count the size of tasks
 const args = process.argv.slice(2);
+
 const objData = readFileSync(jsonFilePath, "utf-8");
 const tasks = JSON.parse(objData);
+
 const countTasks = tasks.length;
 
 function isIdValid(id)
@@ -73,6 +75,7 @@ function addTask(task)
         process.exit(2);
     }
 
+    //Check if the description is valid
     if (typeof task !== "string")
     {
         console.log("Invalid Description: Please provide a valid one.");
