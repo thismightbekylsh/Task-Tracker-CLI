@@ -2,6 +2,7 @@
 
 import fs, { readFile, readFileSync } from "fs";
 
+//Create a variable for JSON file path
 const jsonFilePath = "data.json";
 
 //Check if json file is created
@@ -31,18 +32,19 @@ function isIdValid(id)
     //Change id to it's index value
     id -= 1;
 
-    //Check if it's a valid id
+    //Check if it's a invalid id
     if (!Number.isInteger(id) || id < 0 || id >= countTasks)
     {
-        console.log("ID inválido.");
         return false;
     }
-        
+    
+    //Return true if it's valid
     return true;
 }
 
 function isStatusValid(status)
 {
+    //Valid status values
     const validStatus = 
     {
         undefined: true,
@@ -51,6 +53,7 @@ function isStatusValid(status)
         "in-progress": true,
     }
 
+    //Return true of false based on the status value
     return validStatus[status];
 }
 
@@ -59,7 +62,7 @@ function addTask(task)
     //Check if there is a description
     if(task === undefined)
     {
-        console.log("Description missing, correct use: node task-cli add {description}");
+        console.log("Description missing, correct use: node index.js add {description}.");
         process.exit(1);
     }
 
@@ -75,7 +78,9 @@ function addTask(task)
 
     //Add the task to the main tasks array
     tasks.push(newTask);
-    console.log("Task sucessfully added");
+
+    //Message if it was sucessfull and return true
+    console.log("Task sucessfully added.");
     return true;
 }
 
@@ -94,28 +99,33 @@ function removeTask(id)
         task.id = index + 1;
     })
 
-    console.log("Task sucessfully removed");
+    //Message if it was sucessfull and return true
+    console.log("Task sucessfully removed.");
     return true;
 }
 
 function updateTasks(id, taskEdit)
 {
-    
     //Check if the new description is valid
     if (typeof taskEdit !== "string")
     {
-        console.log("Descrição inválida");
+        console.log("Invalid Description: Please provide a valid one.");
         process.exit(3);
     }
 
     //Check if the id is valid
     if(!isIdValid(id))
+    {   
+        console.log("Invalid Status: Please provide a valid one.");
         process.exit(2);
-    
+    }
+
+    //Changes the task description and the update date
     tasks[id - 1].description = taskEdit;
     tasks[id - 1].updatedAt = new Date().toLocaleString();
 
-    console.log("Task sucessfully updated");
+    //Message if it was sucessfull and return true
+    console.log("Task sucessfully updated.");
     return true;
 }
 
@@ -129,7 +139,7 @@ function listTasks(status)
     }
 
     //Print the information
-    console.log("ID\tTarefa\tStatus\tData de Criação\tData de Atualização\n");
+    console.log("ID\tTask\tStatus\tCreation date\tLast update\n");
 
     //Print each task based on it's choosen status
     tasks.forEach((task) => 
@@ -155,16 +165,18 @@ function markTaskAs(id, status)
     if(!isIdValid(id))
         process.exit(2);
 
+    //Changes task status
     tasks[id - 1].status = status;
 
-    console.log("Task sucessfully marked as " + status);
+    //Message if it was sucessfull and return true
+    console.log("Task sucessfully marked as " + status + ".");
     return true;
 }
 
 //Check if there is function argument
 if (!args[0])
 {
-    console.log("Usage error: node index.js {add|remove|update|list|mark-done|mark-in-progress} {id} {argument}");
+    console.log("Usage error: node index.js {add|remove|update|list|mark-done|mark-in-progress} {id} {argument}.");
     process.exit(1);
 }
 
@@ -182,10 +194,11 @@ const options =
 //Option validation
 if (!options[args[0]]) 
 {
-    console.log("Invalid argument");
+    console.log("Invalid argument.");
     process.exit(1);
 }
 
+//Get if the function returned true or false (True means that it was sucessfull and needs to be saved)
 const result = options[args[0]]();
 
 //Save function
