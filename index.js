@@ -252,3 +252,5 @@ const shouldSave =
 if (shouldSave[args[0]] && result === true) {
     save();
 }
+
+process.exit(0);
