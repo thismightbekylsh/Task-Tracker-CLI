@@ -73,7 +73,7 @@ function addTask(task)
         process.exit(2);
     }
 
-    if (typeof taskEdit !== "string")
+    if (typeof task !== "string")
     {
         console.log("Invalid Description: Please provide a valid one.");
         process.exit(2);
