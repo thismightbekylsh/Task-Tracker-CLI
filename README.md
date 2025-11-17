@@ -6,11 +6,24 @@ This was built as a command-line tool to manage tasks quickly in terminal-based 
 
 ## Summary
 
+- <a href = "#Instalation">Installation</a>
 - <a href = "#Features">Features</a>
 - <a href = "#Tools-&-Technologies">Tools & Technologies</a>
-- <a href = "#Commands">Commands</a>
-- <a href = "#How-to-use">How to use</a>
+- <a href = "#Usage">Usage</a>
 - <a href = "#Author">Author</a>
+
+## Installation
+1. Clone the directory.
+2. Navigate to the task-tracker-cli folder.
+3. Install all dependencies.
+4. Run npm link to make the task-cli a global command on your system.
+
+```cmd
+git clone https://github.com/thismightbekylsh/Task-Tracker-CLI.git
+cd Task-Tracker-CLI
+npm install
+npm link
+```
 
 ## Features
 - [x] Add tasks.
@@ -29,24 +42,38 @@ This was built as a command-line tool to manage tasks quickly in terminal-based 
 
 <img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width = "30"> <img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width = "30"> <img src = https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg width = "30">
 
-## Commands
+## Usage
 
-```
-- add {description}
-- remove {id}
-- update {id} {description}
-- list {status}
-- mark-done {id}
-- mark-in-progress {id}
+### Add new task
+```bash
+task-cli add "Task description"
 ```
 
+### Remove task
+```bash
+task-cli remove {id}
+```
+
+### Update task
+```bash
+task-cli update {id} "New task description"
+```
+
+### List tasks
+```bash
+task-cli list {status}
+```
 **Note**: Leave the `list` status argument empty to show all tasks
 
-## How to use
+### Mark task as in-progress
+```bash
+task-cli mark-in-progress {id}
+```
 
-1. Download and unzip the project files.
-2. Open cmd and navigate to the directory where index.js is located.
-3. Run "node index.js {option} {id} {argument}".
+### Mark task as done
+```bash
+task-cli mark-done {id}
+```
 
 ### Example
 
