@@ -199,7 +199,7 @@ function markTaskAs(id, status)
 //Check if there is function argument
 if (!args[0])
 {
-    console.log("Usage error: node index.js {add|remove|update|list|mark-done|mark-in-progress} {id} {argument}.");
+    console.log("Usage error, correct usage: task-cli {add|remove|update|list|mark-done|mark-in-progress} {id} {argument}.");
     process.exit(4);
 }
 
@@ -230,11 +230,13 @@ const save = () =>
     const jsonData = JSON.stringify(tasks);
     fs.writeFileSync('data.json', jsonData, (err) => {
         if (err)
-            console.error('Error saving data in JSON file:', err);
+        {
+            console.log('Error saving data in JSON file:', err);
+            process.exit(5);
+        }
         else 
         {
-            console.log("Error saving data")
-            process.exit(5);
+            console.error("Data sucessfully saved");
         }
 });
 }
