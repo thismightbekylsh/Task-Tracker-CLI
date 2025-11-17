@@ -1,0 +1,28 @@
+{
+  "name": "task-tracker-cli",
+  "version": "1.0.0",
+  "description": "A lightweight command-line tool for creating, listing and managing tasks directly from the terminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "task-cli": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thismightbekylsh/Task-Tracker-CLI.git"
+  },
+  "keywords": [
+    "cli", 
+    "task"
+  ],
+  "author": "Kaylan Barbosa Sampaio",
+  "license": "GPL-3.0-only",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/thismightbekylsh/Task-Tracker-CLI/issues",
+    "email": "thismightbekylsh@gmail.com"
+  },
+  "homepage": "https://github.com/thismightbekylsh/Task-Tracker-CLI#readme"
+}
