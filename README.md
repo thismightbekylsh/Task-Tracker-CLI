@@ -79,16 +79,16 @@ task-cli mark-done {id}
 
 ```bash
 #Add a new task
-node index.js add "Go to school"
+task-cli add "Go to school"
 
 #Update the task description
-node index.js update 1 "Go to school tomorrow"
+task-cli update 1 "Go to school tomorrow"
 
 #Mark it as in progress
-node index.js mark-in-progress 1
+task-cli mark-in-progress 1
 
 #List the current tasks
-node index.js list
+task-cli list
 ```
 
 ## Author
