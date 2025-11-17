@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 //This program is a task tracker made to run in CLI enviroment. Read README.md to more information.
 /*
 Error 1 - Invalid or missing id
@@ -7,7 +8,7 @@ Error 4 - Missing or invalid option
 Error 5 - Data saving error
 */
 
-import fs, { readFile, readFileSync } from "fs";
+const fs = require("fs");
 
 //Create a variable for JSON file path
 const jsonFilePath = "data.json";
@@ -25,13 +26,13 @@ if(!fs.existsSync(jsonFilePath))
         {
             console.log('JSON file created successfully: data.json');
         }
-    })
+    });
 }
 
 //Gets args, tasks data and count the size of tasks
 const args = process.argv.slice(2);
 
-const objData = readFileSync(jsonFilePath, "utf-8");
+const objData = fs.readFileSync(jsonFilePath, "utf-8");
 const tasks = JSON.parse(objData);
 
 const countTasks = tasks.length;
@@ -227,7 +228,7 @@ const result = options[args[0]]();
 const save = () => 
 {
     const jsonData = JSON.stringify(tasks);
-    fs.writeFile('data.json', jsonData, (err) => {
+    fs.writeFileSync('data.json', jsonData, (err) => {
         if (err)
             console.error('Error saving data in JSON file:', err);
         else 
@@ -235,7 +236,7 @@ const save = () =>
             console.log("Error saving data")
             process.exit(5);
         }
-})
+});
 }
 
 //Get if should save in current operation
